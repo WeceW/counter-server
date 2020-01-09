@@ -12,3 +12,6 @@
 /comments CommentR POST
 
 /profile ProfileR GET
+
+/counter CounterR POST
+/counter/#CounterId CounterAddR PATCH
