@@ -14,5 +14,5 @@ patchCounterAddR :: CounterId -> Handler Value
 patchCounterAddR idCounter = do
   _ <- runDB $ get404 idCounter
   runDB $ update idCounter [CounterCount +=. 1]
-  sendStatusJSON noContent204 (object [])
-  
+  dt <- runDB $ selectList [CounterId ==. idCounter] []
+  sendStatusJSON accepted202 (object ["content" .= (dt)])
